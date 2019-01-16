@@ -105,31 +105,33 @@ object LRUCache {
     node.next.get.prev = None
     head = head.get.next
   }
+
+  def main(args: Array[String]): Unit = {
+    LRUCache.set(Student(2, "s"))
+    println(LRUCache.cache)
+
+    LRUCache.set(Student(3, "p"))
+    println(LRUCache.cache)
+
+    println(LRUCache.get(2))
+    println(LRUCache.cache)
+
+
+    LRUCache.set(Student(4, "d"))
+    println(LRUCache.cache)
+
+
+    println(LRUCache.get(2))
+    println(LRUCache.cache)
+
+
+    LRUCache.set(Student(5, "f"))
+    println(LRUCache.cache)
+
+    LRUCache.set(Student(6, "g"))
+    println(LRUCache.cache)
+
+    LRUCache.set(Student(7, "h"))
+    println(LRUCache.cache)
+  }
 }
-
-LRUCache.set(Student(2, "s"))
-println(LRUCache.cache)
-
-LRUCache.set(Student(3, "p"))
-println(LRUCache.cache)
-
-println(LRUCache.get(2))
-println(LRUCache.cache)
-
-
-LRUCache.set(Student(4, "d"))
-println(LRUCache.cache)
-
-
-println(LRUCache.get(2))
-println(LRUCache.cache)
-
-
-LRUCache.set(Student(5, "f"))
-println(LRUCache.cache)
-
-LRUCache.set(Student(6, "g"))
-println(LRUCache.cache)
-
-LRUCache.set(Student(7, "h"))
-println(LRUCache.cache)
