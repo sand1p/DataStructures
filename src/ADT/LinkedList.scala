@@ -2,7 +2,7 @@ package ADT
 
 case class Node( var data: Int, var  next: Option[Node])
 
-class LinkedList {
+class LinkedList(capacity: Int = Int.MaxValue) {
   var head: Option[Node] = None
   var tail: Option[Node] = None
 
@@ -27,31 +27,39 @@ class LinkedList {
   }
 
   def addAtBeginning(data: Int): Unit = {
-    val node = createNode(data)
-    node.foreach{ n =>
-      n.next = head
-      head match {
-      case  Some(h) =>
-        if(h.next.isEmpty) {
-          tail = head
+    if(size < capacity) {
+      val node = createNode(data)
+      node.foreach { n =>
+        n.next = head
+        head match {
+          case Some(h) =>
+            if (h.next.isEmpty) {
+              tail = head
+            }
+          case None =>
+            tail = node
         }
-      case None =>
-        tail = node
       }
+      head = node
+    } else  {
+      println("Linked List cannot accomodate more data")
     }
-    head = node
   }
 
   def addAtEnd(data: Int): Unit = {
-    val node = createNode(data)
-    var current = tail
-    current match {
-      case Some(n) =>
-        n.next = node
-      case None =>
-        head = node
+    if(size < capacity) {
+      val node = createNode(data)
+      var current = tail
+      current match {
+        case Some(n) =>
+          n.next = node
+        case None =>
+          head = node
+      }
+      tail = node
+    } else  {
+      println("Linked List cannot accomodate more data")
     }
-    tail = node
   }
 
   def deleteFirst: Unit = {
@@ -97,22 +105,27 @@ class LinkedList {
   }
 
   def addAtIndex(index: Int, data: Int) = {
-    var current = head
-    var i = 0
-    if(size + 1 < index) {
-      Unit
-    }
-    else  {
-     while( i < index ) {
-     current.foreach { node =>
-       node.next
-     }
-     i+=1
-     }
+    if(size < capacity) {
+      var current = head
+      var i = 0
+      if(size + 1 < index) {
+        Unit
+      }
+      else  {
+        while( i < index ) {
+          current.foreach { node =>
+            node.next
+          }
+          i+=1
+        }
+      }
+    } else {
+      println("Linked List cannot accomodate more data")
     }
   }
 
-  def deleteAtIndex(index: Int) = {
+//   TODO
+  def deleteAtIndex(index: Int): Unit = {
 
   }
 
@@ -128,12 +141,12 @@ class LinkedList {
     counter
   }
 
-  def reverse() = {
+  def reverse(): Unit = {
     var current = head
     var prev: Option[Node] = None
     var next: Option[Node] = None
     while(current.isDefined) {
-       current.foreach{ n =>
+       current.foreach { n =>
          next = n.next
          n.next = prev
          prev = current
@@ -142,6 +155,11 @@ class LinkedList {
     }
     head = prev
     println(s"New Head: $head")
+  }
+
+//  TODO
+  def merge(list1: LinkedList, list2: LinkedList ): Option[Node] = {
+     list1.head
   }
 
 }
