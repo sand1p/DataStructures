@@ -5,7 +5,7 @@ class Stack(capacity: Int = Int.MaxValue) {
 
   def pop: Int = {
     linkedList.head.map { node =>
-      println(s"Popped: ${node.data}")
+      print(s"${node.data} ")
       linkedList.deleteFirst
       node.data
     }.getOrElse {
@@ -34,6 +34,13 @@ class Stack(capacity: Int = Int.MaxValue) {
 
   def display = {
     linkedList.display
+  }
+
+  def isEmpty : Boolean = {
+    linkedList.size == 0
+  }
+  def nonEmpty: Boolean = {
+    linkedList.size > 0
   }
 }
 

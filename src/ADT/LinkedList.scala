@@ -3,8 +3,8 @@ package ADT
 case class LNode(var data: Int, var  next: Option[LNode] = None)
 
 class LinkedList(capacity: Int = Int.MaxValue) {
-  private var head: Option[LNode] = None
-  private var tail: Option[LNode] = None
+  var head: Option[LNode] = None
+  var tail: Option[LNode] = None
 
   private def createNode(data: Int): Option[LNode] = {
     Option(LNode(data=data))
