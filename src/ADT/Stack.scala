@@ -6,6 +6,7 @@ class Stack(capacity: Int = Int.MaxValue) {
   def pop: Int = {
     linkedList.head.map { node =>
       println(s"Popped: ${node.data}")
+      linkedList.deleteFirst
       node.data
     }.getOrElse {
       println("Underflow")
@@ -19,6 +20,15 @@ class Stack(capacity: Int = Int.MaxValue) {
       linkedList.addAtBeginning(data)
     } else {
       println("Stack Overflow..!!")
+    }
+  }
+
+  def stackTop: Int = {
+    linkedList.head.map{ node =>
+      node.data
+    }.getOrElse {
+      println("Underflow")
+      -1
     }
   }
 
