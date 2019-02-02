@@ -1,18 +1,18 @@
 package ADT
 
-case class Node( var data: Int, var  next: Option[Node])
+case class LNode(var data: Int, var  next: Option[LNode] = None)
 
 class LinkedList(capacity: Int = Int.MaxValue) {
-  var head: Option[Node] = None
-  var tail: Option[Node] = None
+  private var head: Option[LNode] = None
+  private var tail: Option[LNode] = None
 
-  private def createNode(data: Int): Option[Node] = {
-    Option(Node(data, None))
+  private def createNode(data: Int): Option[LNode] = {
+    Option(LNode(data=data))
   }
 
-  def get(data: Int): Option[Node] = {
+  def get(data: Int): Option[LNode] = {
     var current = head
-    var dataNode: Option[Node] = None
+    var dataNode: Option[LNode] = None
     while(current.nonEmpty) {
       current.foreach{ node =>
           if(node.data == data) {
@@ -70,7 +70,7 @@ class LinkedList(capacity: Int = Int.MaxValue) {
 
   def delete(data: Int): Unit = {
     var current = head
-    var prev: Option[Node] = None
+    var prev: Option[LNode] = None
     while(current.nonEmpty) {
       current.foreach { node =>
         if (node.data == data) {
@@ -143,8 +143,8 @@ class LinkedList(capacity: Int = Int.MaxValue) {
 
   def reverse(): Unit = {
     var current = head
-    var prev: Option[Node] = None
-    var next: Option[Node] = None
+    var prev: Option[LNode] = None
+    var next: Option[LNode] = None
     while(current.isDefined) {
        current.foreach { n =>
          next = n.next
@@ -158,7 +158,7 @@ class LinkedList(capacity: Int = Int.MaxValue) {
   }
 
 //  TODO
-  def merge(list1: LinkedList, list2: LinkedList ): Option[Node] = {
+  def merge(list1: LinkedList, list2: LinkedList ): Option[LNode] = {
      list1.head
   }
 
