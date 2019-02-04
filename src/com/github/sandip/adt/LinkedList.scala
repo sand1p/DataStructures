@@ -1,4 +1,4 @@
-package ADT
+package com.github.sandip.adt
 
 case class LNode(var data: Int, var  next: Option[LNode] = None)
 

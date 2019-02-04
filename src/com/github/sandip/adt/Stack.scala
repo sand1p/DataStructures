@@ -1,4 +1,4 @@
-package ADT
+package com.github.sandip.adt
 
 class Stack(capacity: Int = Int.MaxValue) {
   private val linkedList = new LinkedList(capacity)

@@ -1,4 +1,4 @@
-package ADT
+package com.github.sandip.adt
 
 class StackUsingArray(capacity: Int= Int.MaxValue) {
   private val array = Array[Int](capacity)

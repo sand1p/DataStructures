@@ -1,4 +1,6 @@
-package ADT
+package com.github.sandip.applications.stack
+
+import com.github.sandip.adt.Stack
 
 object DecimalToBinaryConversion {
   private val stack = new Stack
